@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id='fio'></h1>
+<script>
+    const component = document.getElementById('fio');
+    async function get() {
+        const resp = await fetch('/api/name');
+        component.append(await resp.text());
+    }
+    get();
+</script>
+</body>
+</html>

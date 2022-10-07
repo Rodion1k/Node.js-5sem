@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="main">
+<script>
+    const element=document.getElementById('main');
+    async function getFact(f) {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+        const resp = await fetch(`http://localhost:5000/fact-tick?k=${f}`, requestOptions);
+        return await resp.json();
+    }
+
+    getFact(4)
+
+    async function addResultsToBody() {
+        const startTime = performance.now();
+        for (let i = 1; i <= 20; i++) {
+            let newItem = document.createElement('h1'); //or innerHtml
+            let factObj = await getFact(i);
+            newItem.textContent = `${i}. Result: ${Math.round(performance.now() - startTime)} - ${factObj.k}/${factObj.fact}`
+            element.appendChild(newItem);
+        }
+    }
+
+    addResultsToBody();
+</script>
+
+</body>
+</html>

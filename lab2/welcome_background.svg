@@ -1,0 +1,34 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="304.221" cy="-26.1154" r="182.039" transform="rotate(23.5449 304.221 -26.1154)" fill="#2064B5"/>
+<circle cx="654.733" cy="325.189" r="73.191" transform="rotate(23.5449 654.733 325.189)" fill="#2064B5" fill-opacity="0.2"/>
+<circle cx="47.5513" cy="445.471" r="176.409" transform="rotate(23.5449 47.5513 445.471)" fill="#2064B5" fill-opacity="0.8"/>
+<circle cx="393.331" cy="356.63" r="75.0677" transform="rotate(23.5449 393.331 356.63)" fill="#2064B5" fill-opacity="0.6"/>
+<circle cx="557.358" cy="168.12" r="31.9038" transform="rotate(23.5449 557.358 168.12)" fill="#2064B5" fill-opacity="0.4"/>
+<circle cx="549.029" cy="567.773" r="88.2045" transform="rotate(23.5449 549.029 567.773)" fill="#2064B5" fill-opacity="0.1"/>
+<circle cx="1604.36" cy="849.342" r="95.7202" fill="#2064B5"/>
+<circle cx="1700.08" cy="1040.78" r="39.1997" fill="#2064B5" fill-opacity="0.6"/>
+<circle cx="1759.34" cy="670.664" r="75.6645" fill="#2064B5" fill-opacity="0.8"/>
+<circle cx="1354.58" cy="670.664" r="41.0229" fill="#2064B5" fill-opacity="0.4"/>
+<circle cx="1424.77" cy="842.049" r="23.7021" fill="#2064B5" fill-opacity="0.2"/>
+<circle cx="1306.26" cy="894.012" r="28.2602" fill="#2064B5" fill-opacity="0.1"/>
+<circle cx="526.599" cy="1063.19" r="131.486" transform="rotate(-39.7902 526.599 1063.19)" fill="#5CCBEE"/>
+<circle r="48.8857" transform="matrix(-0.768393 0.639978 0.639978 0.768393 688.567 717.681)" fill="#5CCBEE" fill-opacity="0.4"/>
+<circle r="72.4857" transform="matrix(-0.768393 0.639978 0.639978 0.768393 282.087 961.895)" fill="#5CCBEE" fill-opacity="0.8"/>
+<circle r="32.0286" transform="matrix(-0.768393 0.639978 0.639978 0.768393 814.108 994.845)" fill="#5CCBEE" fill-opacity="0.2"/>
+<circle r="32.0286" transform="matrix(-0.768393 0.639978 0.639978 0.768393 534.229 782.605)" fill="#5CCBEE" fill-opacity="0.6"/>
+<circle cx="1822.39" cy="189.164" r="103.229" transform="rotate(96.2861 1822.39 189.164)" fill="#5CCBEE"/>
+<circle cx="1595.6" cy="-41.67" r="101.386" transform="rotate(96.2861 1595.6 -41.67)" fill="#5CCBEE" fill-opacity="0.8"/>
+<circle cx="1600.23" cy="337.163" r="51.6145" transform="rotate(96.2861 1600.23 337.163)" fill="#5CCBEE" fill-opacity="0.6"/>
+<circle cx="1585.01" cy="172.289" r="18.4337" transform="rotate(96.2861 1585.01 172.289)" fill="#5CCBEE" fill-opacity="0.4"/>
+<g filter="url(#filter0_b_136_499)">
+<rect width="1920" height="1080" fill="white" fill-opacity="0.02"/>
+</g>
+<defs>
+<filter id="filter0_b_136_499" x="-80" y="-80" width="2080" height="1240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="40"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_136_499"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_136_499" result="shape"/>
+</filter>
+</defs>
+</svg>

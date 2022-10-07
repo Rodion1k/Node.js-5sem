@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <fieldset>
+        <legend>Operations</legend>
+        <label for="Id">Id:</label>
+        <input type="text" id="Id" placeholder="Name"/>
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" placeholder="Name"/>
+        <label for="bDay">bDay:</label>
+        <input type="text" id="bDay" placeholder="bDay"/>
+        <button onclick="GetUsers()">Get</button>
+        <button onclick="AddUser()">Add</button>
+        <button onclick="UpdateUser()">Update</button>
+        <button onclick="DeleteUser()">Delete</button>
+    </fieldset>
+    <h1 id="errorBlock"></h1>
+</div>
+<div id="usersBlock"></div>
+<script>
+    class Checker {
+        checkFieldsForAdd() {
+            return document.getElementById('Id').value !== '' &&
+                document.getElementById('Name').value !== '' &&
+                document.getElementById('bDay').value !== '';
+        }
+
+        checkFieldsForDelete() {
+            return document.getElementById('Id').value !== '';
+        }
+    }
+
+    const containerComponent = document.getElementById('usersBlock');
+    const checker = new Checker();
+    const GetUsers = async () => {
+        error('');
+        console.log('GetUsers');
+        const response = await fetch('http://localhost:5000/api/db', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        let users = await response.json();
+        console.log(users)
+        await renderUsers(users);
+    }
+    const AddUser = async () => {
+        if (!checker.checkFieldsForAdd())
+            error('Fill all fields');
+        else {
+            error('');
+            const response = await fetch('http://localhost:5000/api/db', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        id: document.getElementById('Id').value,
+                        name: document.getElementById('Name').value,
+                        bDay: document.getElementById('bDay').value
+                    }
+                )
+            });
+            let users = await response.json();
+            await renderUsers(users);
+        }
+    }
+    const DeleteUser = async () => {
+        if (!checker.checkFieldsForDelete()) {
+            error('Fill id field');
+        } else {
+            error('');
+            const response = await fetch('http://localhost:5000/api/db', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        id: document.getElementById('Id').value
+                    }
+                )
+            });
+            let users = await response.json();
+            await renderUsers(users);
+        }
+
+    }
+    const UpdateUser = async () => {
+        if (!checker.checkFieldsForAdd()) {
+            error('Fill all fields');
+        } else {
+            error('');
+            const response = await fetch('http://localhost:5000/api/db', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        id: document.getElementById('Id').value,
+                        name: document.getElementById('Name').value,
+                        bDay: document.getElementById('bDay').value
+                    }
+                )
+            });
+            let users = await response.json();
+            renderUsers(users);
+        }
+
+    }
+
+
+    const renderUsers = (users) => {
+        console.log(users);
+        containerComponent.innerHTML = '';
+        users.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.innerHTML = `${user.id} ${user.name} ${user.bDay}`;
+            containerComponent.appendChild(userDiv);
+        })
+    }
+    const error = errMsg => {
+        document.getElementById('errorBlock').innerHTML = errMsg;
+    }
+</script>
+</body>
+</html>

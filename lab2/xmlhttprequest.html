@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id='fio'></h1>
+<script>
+    let component = document.getElementById('fio');
+    let request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:5000/api/name'); // add async
+    request.send();
+    request.onreadystatechange = () => {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                component.append(request.responseText);
+            } else
+                component.append(request.statusText);
+        }
+    }
+</script>
+</body>
+</html>
