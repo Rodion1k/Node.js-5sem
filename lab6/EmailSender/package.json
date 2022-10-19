@@ -1,0 +1,14 @@
+{
+  "name": "emailsendercl",
+  "version": "1.0.0",
+  "description": "for sending emails",
+  "main": "EmailSender.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "VRL",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^6.8.0"
+  }
+}

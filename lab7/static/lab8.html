@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lab8</title>
+</head>
+<body>
+<form method="get" action="/connection">
+    <fieldset>
+        <legend>Connection</legend>
+        <label for="set">Set</label>
+        <input type="text" name="set" id="set">
+        <br>
+        <input type="submit" value="Connect">
+    </fieldset>
+</form>
+<br>
+<form method="get" action="/headers">
+    <fieldset>
+        <legend>Headers</legend>
+        <input type="submit" value="Get headers">
+    </fieldset>
+</form>
+<br>
+<form method="get" action="/parameter">
+    <fieldset>
+        <legend>Parameter</legend>
+        <label for="x">X</label>
+        <input type="text" name="x" id="x">
+        <br>
+        <label for="y">Y</label>
+        <input type="text" name="y" id="y">
+        <input type="submit" value="Post parameters">
+    </fieldset>
+</form>
+<br>
+<form method="get" action="/resp-status">
+    <fieldset>
+        <legend>Status</legend>
+        <label for="code">Code</label>
+        <input type="text" name="code" id="code">
+        <br>
+        <label for="message">Message</label>
+        <input type="text" name="message" id="message">
+        <input type="submit" value="Post Status">
+    </fieldset>
+</form>
+<br>
+<form method="post" action="/formparameter">
+    <fieldset>
+        <legend>Form parameter</legend>
+        <label for="text">Text</label>
+        <input type="text" name="text" id="text">
+        <br>
+        <label for="number">Number</label>
+        <input type="number" name="number" id="number">
+        <br>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label for="checkbox">Checkbox</label>
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <br>
+        <label for="radio">Radio</label>
+        <input type="radio" name="radio" id="radio">
+        <br>
+        <label for="textarea">Textarea</label>
+        <textarea id="textarea" name="textarea"></textarea>
+        <br>
+        <label>
+            <input type="submit" name="submit" value="1">
+            <input type="submit" name="submit" value="2">
+        </label>
+    </fieldset>
+</form>
+<br>
+<form method="get" action="/socket">
+    <fieldset>
+        <legend>Get socket information</legend>
+        <input type="submit" value="Get">
+    </fieldset>
+</form>
+<br>
+<br>
+<fieldset>
+    <legend>Post json</legend>
+    <label for="comment">Comment</label>
+    <input type="text" id="comment">
+    <br>
+    <label for="xp">X</label>
+    <input type="text" id="xp">
+    <br>
+    <label for="yp">y</label>
+    <input type="text" id="yp">
+    <br>
+    <label for="messg">message</label>
+    <input type="text" id="messg">
+    <br>
+    <br>
+    <label for="name">Name</label>
+    <input type="text" id="name">
+    <br>
+    <label for="surname">Surname</label>
+    <input type="text" id="surname">
+    <br>
+    <button onclick="sendJson()">Send</button>
+</fieldset>
+<br>
+<fieldset>
+    <legend>Post xml</legend>
+    <button onclick="sendXML()">Send</button>
+</fieldset>
+<br>
+<form method="get" action="/upload">
+    <fieldset>
+        <legend>Upload</legend>
+        <input type="submit" value="Get form">
+    </fieldset>
+</form>
+<br>
+<form method="get" action="/close">
+    <fieldset>
+        <legend>Close server</legend>
+        <input type="submit" value="Close">
+    </fieldset>
+</form>
+<script>
+    function sendJson() {
+        let comment = document.getElementById("comment").value;
+        let xp = document.getElementById("xp").value;
+        let yp = document.getElementById("yp").value;
+        let messg = document.getElementById("messg").value;
+        let name = document.getElementById("name").value;
+        let surname = document.getElementById("surname").value;
+        let json = {
+            "comment": comment,
+            "x": xp,
+            "y": yp,
+            "message": messg,
+            "mass": ["a", "b", "c"],
+            "author": {
+                "name": name,
+                "surname": surname
+            }
+        };
+        fetch("/json", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(json)
+        }).then(response => response.text()).then(result => alert(result));
+    }
+
+    function sendXML() {
+        const xnlString = '<request id ="28">' +
+            '<x value = "1"/>' +
+            '<x value = "2"/>' +
+            '<x value = "3"/>' +
+            '<m value = "a"/>' +
+            '<m value = "b"/>' +
+            '<m value = "c"/>' +
+            '</request>';
+        fetch("/xml", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/xml;charset=utf-8'
+            },
+            body: xnlString
+        }).then(response => response.text()).then(result => alert(result));
+    }
+
+
+</script>
+</body>
+</html>

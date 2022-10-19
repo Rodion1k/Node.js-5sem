@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6</title>
+</head>
+<body>
+<div>
+    <input type="email" id="toEmail" placeholder="To" required/>
+    <input type="text" id="message" placeholder="Enter your Message" required/>
+    <button onclick="sendMessage()">Send</button>
+</div>
+<script>
+const sendMessage= async ()=>{
+    const toEmail = document.getElementById("toEmail").value;
+    const message = document.getElementById("message").value;
+    const response =await fetch("http://localhost:3000/sendMessage",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            toEmail,
+            message
+        })
+    });
+}
+</script>
+
+</body>
+</html>
