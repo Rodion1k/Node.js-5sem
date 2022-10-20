@@ -89,9 +89,10 @@ const getHandler = (request, response) => {
     } else if (RegExp('^/files/.*$').test(parsedUrl.pathname)) {
         getStaticResource(request, response);
         return;
-    } else if (parsedUrl.pathname === '/close') {// TODO: close sockets etc
+    } else if (parsedUrl.pathname === '/close') {
         const time = 3000;
-        let timer = setTimeout(() => {
+        setTimeout(() => {
+            request.socket.destroy();
             server.close(() => {
                 console.log('Server closed');
             });
@@ -147,7 +148,9 @@ const postHandler = (request, response) => {
             form.on('file', (field, file) => {
 
             });
-            form.on('error', (err)=>{response.end('Not uploaded!')});
+            form.on('error', (err) => {
+                response.end('Not uploaded!')
+            });
             form.on('close', () => {
                 response.writeHead(200, {'Content-type': 'text/plain'});
                 response.end("Uploaded!");
